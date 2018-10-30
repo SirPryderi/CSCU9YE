@@ -52,6 +52,17 @@ class Colours:
     def remove_index(self, i) -> Colour:
         return self.list.pop(i)
 
+    def invert_region(self, a, b):
+        if a > b:
+            temp = a
+            a = b
+            b = temp
+
+        stop = (b - a) // 2
+
+        for i in range(0, stop):
+            self.swap(a + i, b - i)
+
     def is_local_optimum(self) -> bool:
         total_distance = self.total_distance()
 

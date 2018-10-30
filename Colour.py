@@ -58,21 +58,23 @@ class Colours:
 
         return True
 
+    def swap(self, a, b):
+        """Swaps color at index a with colour at index """
+
+        assert 0 <= a < self.size()
+        assert 0 <= b < self.size()
+
+        temp = self.list[a]
+        self.list[a] = self.list[b]
+        self.list[b] = temp
+
     def bubble_swap(self, i):
         """Swaps colour at index i with colour at i + 1"""
         size = self.size()
 
-        assert 0 <= i < size
-
         if i == size - 1:
-            temp = self.list[0]
-            self.list[0] = self.list[i]
-            self.list[i] = temp
+            next_i = 0
         else:
-            try:
-                temp = self.list[i]
-                self.list[i] = self.list[i + 1]
-                self.list[i + 1] = temp
-            except:
-                print(i + 1, size)
-                pass
+            next_i = i + 1
+
+        self.swap(i, next_i)

@@ -46,6 +46,9 @@ class Colours:
 
         return distance
 
+    def remove_index(self, i):
+        return self.list.pop(i)
+
     def is_local_optimum(self) -> bool:
         total_distance = self.total_distance()
 

@@ -23,7 +23,7 @@ def greedy_constructive(colours: Colours):
     colours = colours.copy()
     sorted_colours = Colours([])
 
-    randint = random.randint(0, colours.size() - 1)
+    randint = colours.random_index()
 
     start_color = colours.remove_index(randint)
     sorted_colours.list.append(start_color)

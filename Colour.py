@@ -46,7 +46,10 @@ class Colours:
 
         return distance
 
-    def remove_index(self, i):
+    def random_index(self) -> int:
+        return random.randint(0, self.size() - 1)
+
+    def remove_index(self, i) -> Colour:
         return self.list.pop(i)
 
     def is_local_optimum(self) -> bool:

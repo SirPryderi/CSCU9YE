@@ -36,7 +36,7 @@ def plot_colours(col, colours, perm):
     plt.show()
 
 
-def plot_kolours(colours: Colours):
+def plot_kolours(colours: Colours, title):
     ratio = 10
     img = np.zeros((ratio, len(colours.list), 3))
 
@@ -46,4 +46,5 @@ def plot_kolours(colours: Colours):
     fig, axes = plt.subplots(1, figsize=(8, 4))  # figsize=(width,height) handles window dimensions
     axes.imshow(img, interpolation='nearest')
     axes.axis('off')
+    axes.set_title(title)
     plt.show()

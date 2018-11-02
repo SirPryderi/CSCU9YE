@@ -41,7 +41,7 @@ class Colours:
         return Colours(self.list.copy())
 
     def randomise(self):
-        return self.random_subsets(self.size())
+        return random.shuffle(self.list)
 
     def random_subsets(self, size):
         return Colours(random.sample(self.list, size))

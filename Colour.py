@@ -1,3 +1,4 @@
+import colorsys
 import math
 import random
 
@@ -17,6 +18,13 @@ class Colour:
 
     def to_array(self) -> list:
         return [self.r, self.g, self.b]
+
+    def to_hsv(self) -> list:
+        return colorsys.rgb_to_hsv(self.r, self.g, self.b)
+
+    @property
+    def hue(self) -> float:
+        return self.to_hsv()[0]
 
 
 class Colours:

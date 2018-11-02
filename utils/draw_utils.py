@@ -49,7 +49,7 @@ def benchmark_boxplot(times, labels=None):
     ax.set_ylabel('Execution time ($s$)')
     ax.set_title('Algorithms execution time for %d iterations' % len(times[0]))
     # Save the figure
-    fig.savefig('../benchmark.png', bbox_inches='tight')
+    fig.savefig('../imgs/benchmark_boxplot.png', bbox_inches='tight')
     plt.show()
 
 
@@ -88,5 +88,5 @@ def benchmark_barchart_error(algorithms, times):
 
     # Save the figure and show
     plt.tight_layout()
-    plt.savefig('../img/bar_plot_with_error_bars.png')
+    plt.savefig('../imgs/benchmark_barchart.png')
     plt.show()

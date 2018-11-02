@@ -10,15 +10,17 @@ size, colours = load_file()
 # Options
 
 test_size = 100  # Size of the subset of colours for testing
-max_iterations = 2000  # Maximum number of iterations
+iterations = 2000  # Maximum number of iterations
+mhc_runs = 50  # Number of runs for the MHC
 
 random_subset_1 = colours.random_subsets(test_size)
 
 # Algorithm Runs
 
 constructive_subset_1 = greedy_constructive(random_subset_1)
-hill_climb_subset_1 = hill_climb(random_subset_1, max_iterations)
-multi_hc_subset_1, _ = multi_hc(random_subset_1, max_iterations, 50)
+hill_climb_subset_1 = hill_climb(random_subset_1, iterations)
+
+multi_hc_subset_1, _ = multi_hc(random_subset_1, iterations, mhc_runs)
 spectrum_subset_1 = spectrum_sort_shake(random_subset_1)
 
 # Plotting

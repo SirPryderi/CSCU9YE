@@ -2,8 +2,8 @@ from algorithms.greedyconstructive import greedy_constructive
 from algorithms.hillclimbing import hill_climb
 from algorithms.multi_hc import multi_hc
 from algorithms.spectrum import spectrum_sort_shake
-from drawColours import plot_kolours
-from utils import load_file
+from utils.draw_utils import plot_kolours
+from utils.file_utils import load_file
 
 size, colours = load_file()
 

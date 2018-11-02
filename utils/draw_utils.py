@@ -1,25 +1,13 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Reads the file  of colours
-# Returns the number of colours in the file and a list with the colours (RGB) values
 from Colour import Colour, Colours
-
-
-def read_file(fname):
-    with open(fname, 'r') as afile:
-        lines = afile.readlines()
-    n = int(lines[3])  # number of colours  in the file
-    colours = []
-    lines = lines[4:]  # colors as rgb values
-    for l in lines:
-        colours.append(Colour(l.split()))
-    return n, Colours(colours)
 
 
 # Display the colours in the order of the permutation in a pyplot window
 # Input, list of colours, and ordering  of colours.
 # They need to be of the same length
+
 
 def plot_colours(col, colours, perm):
     assert len(col) == len(perm)

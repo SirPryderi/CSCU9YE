@@ -1,7 +1,6 @@
 import math
 
 from Colour import Colours
-import random
 
 
 def lowest_num(colour, colours_list):
@@ -30,9 +29,8 @@ def greedy_constructive(colours: Colours):
 
     while colours.size() > 0:
         closest = lowest_num(start_color, colours)
-        new_Colour = colours.remove_index(closest)
-        sorted_colours.list.append(new_Colour)
-        start_color = new_Colour
+        new_colour = colours.remove_index(closest)
+        sorted_colours.list.append(new_colour)
+        start_color = new_colour
 
-    print(sorted_colours)
     return sorted_colours

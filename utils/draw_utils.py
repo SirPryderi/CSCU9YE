@@ -36,3 +36,57 @@ def plot_kolours(colours: Colours, title):
     axes.axis('off')
     axes.set_title(title)
     plt.show()
+
+
+def benchmark_boxplot(times, labels=None):
+    # Create a figure instance
+    fig = plt.figure(1, figsize=(9, 6))
+    # Create an axes instance
+    ax = fig.add_subplot(111)
+    # Create the boxplot
+    bp = ax.boxplot(times, labels=labels)
+    ax.yaxis.grid(True, linestyle='-', which='major', color='lightgrey', alpha=0.5)
+    ax.set_ylabel('Execution time ($s$)')
+    ax.set_title('Algorithms execution time for %d iterations' % len(times[0]))
+    # Save the figure
+    fig.savefig('../benchmark.png', bbox_inches='tight')
+    plt.show()
+
+
+def unpack(algorithms: list) -> (list, list, list):
+    labels = [row[0] for row in algorithms]
+    functions = [row[1] for row in algorithms]
+    args = [row[2] for row in algorithms]
+
+    return labels, functions, args
+
+
+def benchmark_barchart_error(algorithms, times):
+    labels, functions, args = unpack(algorithms)
+
+    arrays = []
+    means = []
+    stds = []
+
+    for arr in times:
+        arrays.append(np.array(arr))
+
+    for array in arrays:
+        means.append(np.mean(array))
+        stds.append(np.std(array))
+
+    x_pos = np.arange(len(labels))
+
+    fig, ax = plt.subplots(figsize=(9, 6))
+    ax.bar(x_pos, means, yerr=stds, align='center', alpha=0.5, ecolor='black', capsize=10)
+
+    ax.set_ylabel('Average execution time ($s$)')
+    ax.set_xticks(x_pos)
+    ax.set_xticklabels(labels)
+    ax.set_title('Algorithms execution time for %d iterations' % len(times[0]))
+    ax.yaxis.grid(True)
+
+    # Save the figure and show
+    plt.tight_layout()
+    plt.savefig('../img/bar_plot_with_error_bars.png')
+    plt.show()

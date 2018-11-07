@@ -16,7 +16,7 @@ def hill_climb_alt(colours: Colours) -> Colours:
     return colours
 
 
-def hill_climb(colours: Colours, iterations) -> Colours:
+def hill_climb(colours: Colours, iterations, progress=None) -> Colours:
     colours = init(colours)
 
     for i in range(iterations):
@@ -29,6 +29,9 @@ def hill_climb(colours: Colours, iterations) -> Colours:
 
         if colours_prime.total_distance() < colours.total_distance():
             colours = colours_prime
+
+        if progress is not None:
+            progress.append(colours_prime.total_distance())
 
     return colours
 

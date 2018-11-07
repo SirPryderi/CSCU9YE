@@ -110,3 +110,12 @@ def benchmark_plot_algorithm(algorithms, result, excluded=[]):
     plt.ylabel("Execution time ($s$)")
     plt.savefig('../imgs/benchmark_compare_scaling.png')
     plt.show()
+
+
+def plot_progress(progress, title):
+    plt.figure()
+    plt.plot(progress)
+    plt.title(title)
+    plt.xlabel("Iteration")
+    plt.ylabel("Value (total distance)")
+    plt.show()

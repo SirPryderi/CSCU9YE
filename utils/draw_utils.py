@@ -35,6 +35,7 @@ def plot_kolours(colours: Colours, title):
     axes.imshow(img, interpolation='nearest')
     axes.axis('off')
     axes.set_title(title)
+    plt.text(0, 25, 'Total distance (value): %d' % colours.total_distance())
     plt.show()
 
 

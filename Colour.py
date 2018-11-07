@@ -55,7 +55,10 @@ class Colours:
         return distance
 
     def random_index(self) -> int:
-        return random.randint(0, self.size() - 1)
+        if self.size() > 0:
+            return random.randint(0, self.size() - 1)
+        else:
+            return 0
 
     def remove_index(self, i) -> Colour:
         return self.list.pop(i)

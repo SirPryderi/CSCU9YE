@@ -90,3 +90,22 @@ def benchmark_barchart_error(algorithms, times):
     plt.tight_layout()
     plt.savefig('../imgs/benchmark_barchart.png')
     plt.show()
+
+
+def plot_line(result, algorithms, index):
+    plt.plot(*result[index], color=algorithms[index][3], label=algorithms[index][0])
+
+
+def benchmark_plot_algorithm(algorithms, result, excluded=[]):
+    plt.figure()
+
+    for index, _ in enumerate(algorithms):
+        if index in excluded: continue
+        plot_line(result, algorithms, index)
+
+    plt.legend()
+    plt.title("Execution time over size of dataset")
+    plt.xlabel("Number of colours")
+    plt.ylabel("Execution time ($s$)")
+    plt.savefig('../imgs/benchmark_compare_scaling.png')
+    plt.show()

@@ -16,7 +16,8 @@ algorithms = [
     ["Constructive", greedy_constructive, None, 'red'],
     ["Hill Climb (%d iter.)" % max_iterations, hill_climb, [max_iterations], 'green'],
     ["MHC (%d iter. %d runs)" % (max_iterations, hc_count), multi_hc, [max_iterations, hc_count], 'blue'],
-    ["Spectrum", spectrum_sort_shake, None, 'purple']
+    # ["Spectrum v1", spectrum_sort, None, 'violet'],
+    ["Spectrum v2", spectrum_sort_shake, None, 'purple']
 ]
 
 size, colours = load_file()
@@ -31,12 +32,13 @@ benchmark_boxplot(times, [row[0] for row in algorithms])
 
 benchmark_barchart_error(algorithms, times)
 
-result = benchmark_algorithm_scaling(colours, algorithms, 100, 5)
+result = benchmark_algorithm_scaling(colours, algorithms, size_of_subsets, 5)
 
+benchmark_plot_algorithm(algorithms, result, [])
 benchmark_plot_algorithm(algorithms, result, [2])
 
 progress = []
 
 hill_climb(subsets[0], max_iterations, progress)
 
-plot_progress(progress, "Change of value during Hill Climbing")
+plot_progress(progress, "Change of value during Hill Climbing (%d colours)" % size_of_subsets)

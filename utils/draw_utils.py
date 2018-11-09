@@ -119,3 +119,45 @@ def plot_progress(progress, title):
     plt.xlabel("Iteration")
     plt.ylabel("Value (total distance)")
     plt.show()
+
+
+def plot_hc_results(results, title):
+    values = []
+
+    for result in results:
+        values.append(result.total_distance())
+
+    # mean
+    # median
+    # standard deviation
+
+    # Create a figure instance
+    fig = plt.figure(1, figsize=(9, 6))
+    # Create an axes instance
+    ax = fig.add_subplot(111)
+    plot_stats(values, ax)
+    # Create the boxplot
+    ax.boxplot(values, showmeans=True)
+    ax.yaxis.grid(True, linestyle='-', which='major', color='lightgrey', alpha=0.5)
+    ax.set_ylabel('Total distance')
+    ax.set_title(title)
+    # Save the figure
+    fig.savefig('../imgs/benchmark_hc_results.png', bbox_inches='tight')
+    plt.show()
+
+
+def plot_stats(values, ax):
+    sigma = np.std(values)
+    median = np.median(values)
+    mu = np.mean(values)
+
+    textstr = '\n'.join((
+        r'$\mu=%.2f$' % (mu,),
+        r'$\mathrm{median}=%.2f$' % (median,),
+        r'$\sigma=%.2f$' % (sigma,)))
+
+    # these are matplotlib.patch.Patch properties
+    props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
+    # place a text box in upper left in axes coords
+    ax.text(0.05, 0.95, textstr, transform=ax.transAxes, fontsize=14,
+            verticalalignment='top', bbox=props)
